@@ -27,3 +27,7 @@
 - [TailwindCSS](https://tailwindcss.com/)
 - [Figma](https://www.figma.com)
 - [Insomnia](https://insomnia.rest/download)
+
+# Licença
+
+Este projeto está licenciado sob a Licença MIT,  consulte o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
