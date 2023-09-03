@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
 
-// H, M, L, VL
-// deadline quantitifyed in days
+// Alta, Media, Baixa, Muito Baixa
 const TasksScheme = new mongoose.Schema(
 	{
 		title: {
 			type: String,
 			required: true,
 		},
+		weekDay: [String],
+		time: Date,
+		deadline: Date,
 		priority: {
 			tyep: String,
 		},
@@ -15,16 +17,10 @@ const TasksScheme = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		deadline: Date,
 	},
 	{
 		timestamps: true,
 	}
 );
 
-const Task = mongoose.model('Task', TasksScheme);
-
-module.exports = {
-	Task,
-	TasksScheme,
-};
+module.exports = mongoose.model('Task', TasksScheme);

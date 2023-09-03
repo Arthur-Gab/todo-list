@@ -1,4 +1,4 @@
-const { Task } = require('../models/Tasks');
+const Task = require('../models/Tasks');
 
 /* 
 	index (mostrar uma lista), show (mostrar somente 1), 
