@@ -79,4 +79,15 @@ module.exports = {
 			return res.status(400).send({ error: err });
 		}
 	},
+	async destroy(req, res) {
+		const { _id } = req.body;
+
+		try {
+			await Task.findOneAndDelete({ _id });
+
+			return res.status(204).send();
+		} catch (err) {
+			return res.status(400).send({ error: err });
+		}
+	},
 };
