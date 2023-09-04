@@ -17,3 +17,7 @@ João é um desenvolvedor freelancer que trabalha em vários projetos simultanea
 Laura, Estudante do Ensino Médio:
 
 Laura é uma estudante do ensino médio que está se preparando para exames e atividades extracurriculares. Ela utiliza a lista de tarefas para lembrar-se de estudar, praticar esportes e participar de clubes escolares.
+
+Evanildo, Administrador aposentado:
+
+Evanildo, é um administrador aposentado que gosta de se atentar aos dias em que precisa pagar suas contas. Ele utiliza a lista para saber quando precisa pagar uma conta ou se pode esperar mais um pouco para pagar.
