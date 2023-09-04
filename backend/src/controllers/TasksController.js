@@ -7,7 +7,7 @@ const Task = require('../models/Tasks');
 function validarDiasSemana(diasSemana) {
 	const nomesDiasValidos = [
 		'domingo',
-		'segundo',
+		'segunda',
 		'terca',
 		'quarta',
 		'quinta',
@@ -90,6 +90,16 @@ module.exports = {
 			});
 
 			return res.status(201).send(task);
+		} catch (err) {
+			return res.status(400).send({ error: err });
+		}
+	},
+
+	async index(req, res) {
+		try {
+			const tasks = await Task.find();
+
+			return res.status(200).send(tasks);
 		} catch (err) {
 			return res.status(400).send({ error: err });
 		}
