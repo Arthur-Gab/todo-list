@@ -6,21 +6,13 @@ const TasksScheme = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	week_days: {
-		type: [String],
-		required: true,
-	},
-	time: {
+	date: {
 		type: String,
 		required: true,
 	},
 	priority: {
 		type: String,
 		required: true,
-	},
-	deadline: {
-		type: String,
-		default: null,
 	},
 	description: {
 		type: String,

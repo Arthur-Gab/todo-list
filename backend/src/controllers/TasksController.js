@@ -1,9 +1,5 @@
 const Task = require('../models/Tasks');
-const {
-	validarDiasSemana,
-	validarFormatoHora,
-	validarPrioridade,
-} = require('./util/tasksUtils');
+const { validateDate, validatePriority } = require('./util/tasksUtils');
 /* 
 	index (mostrar uma lista), show (mostrar somente 1), 
 	store (criar), update (alterar), destroy (deletar)
@@ -15,31 +11,18 @@ module.exports = {
 
 		// Validar se estamos recebendo os campos e os formatos
 		if (!ITask.title) {
-			return res.status(400).send({ error: 'A tarefa precisa incluir um titulo' });
+			return res.status(400).send({ error: 'A task must have a title' });
 		}
-		if (!validarDiasSemana(ITask.week_days)) {
+		if (!validateDate(ITask.date)) {
 			return res.status(400).send({
-				error: 'É necessário no minimo um nome do dia de semana e escrito em pt-br',
+				error: 'The date must be formatted in the ISO 8601 standard',
 			});
 		}
 
-		if (!validarFormatoHora(ITask.time)) {
+		if (!validatePriority(ITask.priority)) {
 			return res.status(400).send({
-				error: 'O time precisa estar no formato hh:mm:ss',
+				error: 'Priority needs to be between high, medium, low and auto',
 			});
-		}
-
-		if (!validarPrioridade(ITask.priority)) {
-			return res.status(400).send({
-				error: 'A prioridade precisa estar entre alto, medio, baixo e muito_baixo',
-			});
-		}
-
-		if (ITask.deadline) {
-			if (!validarFormatoHora(ITask.deadline))
-				return res.status(400).send({
-					error: 'O cronometro precisa estar no formato hh:mm:ss',
-				});
 		}
 
 		try {
@@ -62,6 +45,7 @@ module.exports = {
 			return res.status(400).send({ error: err });
 		}
 	},
+
 	async update(req, res) {
 		const { _id, ...ITask } = req.body;
 
@@ -79,6 +63,7 @@ module.exports = {
 			return res.status(400).send({ error: err });
 		}
 	},
+
 	async destroy(req, res) {
 		const { _id } = req.body;
 

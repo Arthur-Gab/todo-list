@@ -1,39 +1,18 @@
-function validarDiasSemana(diasSemana) {
-	const nomesDiasValidos = [
-		'domingo',
-		'segunda',
-		'terca',
-		'quarta',
-		'quinta',
-		'sexta',
-		'sabado',
-	];
+function validateDate(time) {
+	// Formatod esperado: 2023-09-06T18:38:25.142Z
+	const regexDate = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
 
-	for (const dia of diasSemana) {
-		if (!nomesDiasValidos.includes(dia.toLowerCase())) {
-			return false; // Encontrou um nome de dia inválido
-		}
-	}
-
-	return true; // Todos os nomes de dia são válidos
+	return regexDate.test(time);
 }
 
-function validarFormatoHora(time) {
-	// Expressão regular para validar o formato "HH:mm:ss"
-	const regexHora = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
-
-	// Testa se a string corresponde à expressão regular
-	return regexHora.test(time);
-}
-
-function validarPrioridade(priority) {
-	if (priority === 'alto') {
+function validatePriority(priority) {
+	if (priority === 'high') {
 		return true;
-	} else if (priority === 'medio') {
+	} else if (priority === 'medium') {
 		return true;
-	} else if (priority === 'baixo') {
+	} else if (priority === 'low') {
 		return true;
-	} else if (priority === 'muito_baixo') {
+	} else if (priority === 'auto') {
 		return true;
 	} else {
 		return false;
@@ -41,7 +20,6 @@ function validarPrioridade(priority) {
 }
 
 module.exports = {
-	validarDiasSemana,
-	validarFormatoHora,
-	validarPrioridade,
+	validateDate,
+	validatePriority,
 };
